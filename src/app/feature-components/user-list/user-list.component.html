@@ -1,1 +1,49 @@
 <app-header></app-header>
+
+<!-- Loading indicator while user list is being fetched or until api fails-->
+<div class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center" *ngIf="!isUserListLoaded && !isUserListApiFailed">
+  <div class="mb-4 ml-10 h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent motion-reduce:animate-[spin_1.5s_linear_infinite]"></div>
+  <strong class="mr-4 mt-4">Loading users...</strong>
+</div>
+
+<!-- Container for the user list table -->
+<div class="overflow-x-auto p-10">
+  <table class="table-auto w-full border-collapse border border-gray-300">
+    <thead>
+    <!-- Table headers -->
+    <tr class="bg-gray-200">
+      <th class="px-4 py-2 text-left">Name</th>
+      <th class="px-4 py-2 text-left">Email</th>
+      <th class="px-4 py-2 text-left">Phone</th>
+      <th class="px-4 py-2 text-left">Username</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <!-- Placeholder row while users are being fetched -->
+    <tr class="bg-white" *ngIf="!isUserListLoaded && allUserList.length === 0 && !isUserListApiFailed">
+      <td class="border px-4 py-2">Fetching Users...</td>
+    </tr>
+
+    <!-- Message for no users found -->
+    <tr class="bg-white" *ngIf="isUserListLoaded && allUserList.length === 0">
+      <td class="border px-4 py-2">No Users Found.</td>
+    </tr>
+
+    <!-- Error message for failed API call -->
+    <tr class="bg-white" *ngIf="isUserListApiFailed">
+      <td class="border px-4 py-2">Failed to load users.</td>
+    </tr>
+    </tbody>
+
+    <!-- Populating user data when loaded successfully -->
+    <tbody *ngIf="isUserListLoaded && allUserList.length > 0">
+    <tr class="bg-white" *ngFor="let user of allUserList;">
+      <td class="border px-4 py-2">{{user.name}}</td>
+      <td class="border px-4 py-2">{{user.email}}</td>
+      <td class="border px-4 py-2">{{user.phone}}</td>
+      <td class="border px-4 py-2">{{user.username}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
