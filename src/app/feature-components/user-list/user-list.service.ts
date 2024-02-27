@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Subject} from "rxjs";
+import {Observable, Subject} from "rxjs";
 import {IUserList} from "./UserList";
 
 @Injectable({
@@ -8,7 +8,7 @@ import {IUserList} from "./UserList";
 })
 export class UserListService {
   public userListDetails: Subject<IUserList[] | string> = new Subject<IUserList[] | string>();
-  public userListDetails$ = this.userListDetails.asObservable();
+  public userListDetails$: Observable<IUserList[] | string> = this.userListDetails.asObservable();
 
   constructor(public httpClient: HttpClient) {}
 

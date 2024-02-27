@@ -6,18 +6,9 @@ import {Router} from "@angular/router";
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit{
+export class HeaderComponent {
 
-  constructor(public router: Router) {
-  }
-
-  /**
-   * Angular lifecycle hook called after Angular has initialized all data-bound properties of the component.
-   * It navigates to the 'users' route when the component is initialized.
-   */
-  ngOnInit(): void {
-    this.router.navigate(['users']);
-  }
+  constructor(public router: Router) {}
 
   /**
    * Navigates to the 'users' route.
