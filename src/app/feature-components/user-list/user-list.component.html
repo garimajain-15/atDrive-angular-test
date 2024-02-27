@@ -33,9 +33,9 @@
     <!-- Table headers -->
     <tr class="bg-gray-200">
       <th class="px-4 py-2 text-left">Name</th>
+      <th class="px-4 py-2 text-left">Username</th>
       <th class="px-4 py-2 text-left">Email</th>
       <th class="px-4 py-2 text-left">Phone</th>
-      <th class="px-4 py-2 text-left">Username</th>
     </tr>
     </thead>
     <tbody>
@@ -56,9 +56,9 @@
     <!-- Populating user data when loaded successfully -->
     <tr class="bg-white" *ngFor="let user of allUserList;">
       <td class="border px-4 py-2">{{user.name}}</td>
+      <td class="border px-4 py-2">{{user.username}}</td>
       <td class="border px-4 py-2">{{user.email}}</td>
       <td class="border px-4 py-2">{{user.phone}}</td>
-      <td class="border px-4 py-2">{{user.username}}</td>
     </tr>
     </tbody>
   </table>
